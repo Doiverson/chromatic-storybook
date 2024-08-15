@@ -9,6 +9,9 @@ jobs:
     chromatic:
         name: Run Chromatic
         runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                directory: [Frontend]
         steps:
             - name: Checkout code
               uses: actions/checkout@v4
