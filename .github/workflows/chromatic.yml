@@ -5,6 +5,10 @@ on:
         branches:
             - main
 
+defaults:
+    run:
+        working-directory: Frontend
+
 jobs:
     chromatic:
         name: Run Chromatic
@@ -19,7 +23,5 @@ jobs:
                   node-version: 20
             - name: Install dependencies
               run: npm ci
-              working-directory: Frontend
             - name: Run Chromatic
-              run: npx chromatic --project-token=${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-              working-directory: Frontend
+              run: npx chromatic --project-token=${{ secrets.CHROMATIC_PROJECT_TOKEN }} --auto-accept-changes
